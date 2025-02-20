@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { CartContext } from "../context/cart";
 
 export function CartSheet() {
-  const { isOpen, toggleCart } = useContext(CartContext)
+  const { isOpen, toggleCart, products } = useContext(CartContext)
 
   return (
     <Sheet open={isOpen} onOpenChange={toggleCart}>
@@ -15,6 +15,9 @@ export function CartSheet() {
             and remove your data from our servers.
           </SheetDescription>
         </SheetHeader>
+        {products.map(product => (
+          <h1 key={product.id}>{product.name}</h1>
+        ))}
       </SheetContent>
     </Sheet>
   )
