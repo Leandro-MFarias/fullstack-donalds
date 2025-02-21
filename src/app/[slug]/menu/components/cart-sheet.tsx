@@ -16,7 +16,7 @@ export function CartSheet() {
           </SheetDescription>
         </SheetHeader>
         {products.map(product => (
-          <h1 key={product.id}>{product.name}</h1>
+          <h1 key={product.id}>{product.name} - {product.quantity}</h1>
         ))}
       </SheetContent>
     </Sheet>
