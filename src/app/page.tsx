@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Loader2Icon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -14,6 +15,10 @@ export default function HomePage() {
           McDonald's
         </Button>
       </Link>
+      <Button className="w-[320px] h-[56px] rounded-full" variant={'outline'} disabled={true}>
+        <Loader2Icon className="animate-spin" />
+        Restaurante em Construção
+      </Button>
     </div>
   );
 }
