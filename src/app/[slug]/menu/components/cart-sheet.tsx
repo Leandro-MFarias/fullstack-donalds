@@ -13,12 +13,12 @@ export function CartSheet() {
 
   return (
     <Sheet open={isOpen} onOpenChange={toggleCart}>
-      <SheetContent className="w-[80%]">
+      <SheetContent className="w-[85%]">
         <SheetHeader>
           <SheetTitle className="text-left">Sacola</SheetTitle>
         </SheetHeader>
         <div className="flex flex-col h-full py-5">
-          <div className="flex-auto">
+          <div className="flex-auto space-y-2">
             {products.map(product => (
               <CartProductItem key={product.id} product={product} />
             ))}

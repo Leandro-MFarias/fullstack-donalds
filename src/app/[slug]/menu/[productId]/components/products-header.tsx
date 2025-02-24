@@ -2,10 +2,10 @@
 
 import { Button } from "@/components/ui/button";
 import { Product } from "@prisma/client";
-import { ChevronLeftIcon, ScrollText } from "lucide-react";
+import { ScrollText } from "lucide-react";
 import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
-
+import { ButtonGoBack } from "../../components/button-back";
 interface ProductHeaderProps {
   product: Pick<Product, "name" | "imageUrl">
 }
@@ -14,20 +14,11 @@ export function ProductHeader({ product }: ProductHeaderProps) {
   const {slug} = useParams<{slug: string}>()
   const router = useRouter()
 
-  const handleBackClick = () => router.back()
   const handleOrdersClick = () => router.push(`/${slug}/orders`)
   
-
   return (
     <div className="relative w-full min-h-[300px]">
-        <Button
-          variant={"secondary"}
-          size="icon"
-          className="absolute left-4 top-4 z-50 rounded-full"
-          onClick={handleBackClick}
-        >
-          <ChevronLeftIcon />
-        </Button>
+        <ButtonGoBack />
         <Image src={product.imageUrl} alt={product.name} fill className="object-contain" />
         <Button
           variant={"secondary"}
