@@ -2,7 +2,7 @@ import { db } from "@/lib/prisma";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { ConsumptionOption } from "./components/consumption-option";
-
+import { ButtonGoBack } from "./menu/components/button-back";
 interface RestaurantPageProps {
   params: Promise<{ slug: string }>;
 }
@@ -15,6 +15,7 @@ export default async function RestaurantPage({ params }: RestaurantPageProps) {
 
   return (
     <section className="flex h-screen flex-col items-center justify-center px-6 pt-24">
+      <ButtonGoBack />
       {/* lOGO E TITULO */}
       <div className="flex flex-col items-center gap-2">
         <Image
