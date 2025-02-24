@@ -6,22 +6,27 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { formatCurrency } from "@/helpers/format-currency";
 import { FinishOrderDialog } from "./finish-order-dialog";
+import { ScrollArea } from "@radix-ui/react-scroll-area";
 
 export function CartSheet() {
   const { isOpen, toggleCart, products, total } = useContext(CartContext)
-  const [ finishOrderDialogOpen, setFinishOrderDialogOpen ] = useState(false)
+  const [finishOrderDialogOpen, setFinishOrderDialogOpen] = useState(false)
 
   return (
     <Sheet open={isOpen} onOpenChange={toggleCart}>
-      <SheetContent className="w-[85%]">
+      <SheetContent className="w-[85%] pt-8">
         <SheetHeader>
           <SheetTitle className="text-left">Sacola</SheetTitle>
         </SheetHeader>
         <div className="flex flex-col h-full py-5">
-          <div className="flex-auto space-y-2">
-            {products.map(product => (
-              <CartProductItem key={product.id} product={product} />
-            ))}
+          <div className="flex-auto overflow-hidden -mx-5 space-y-2">
+            <ScrollArea className="h-full px-5">
+              <div className="flex flex-col gap-5">
+                {products.map(product => (
+                  <CartProductItem key={product.id} product={product} />
+                ))}
+              </div>
+            </ScrollArea>
           </div>
           <Card className="mb-6">
             <CardContent className="p-5">
